@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://april-lemonade.github.io</id>
     <title>Gridea</title>
-    <updated>2021-05-22T15:24:27.769Z</updated>
+    <updated>2021-05-29T07:40:20.837Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://april-lemonade.github.io"/>
     <link rel="self" href="https://april-lemonade.github.io/atom.xml"/>
@@ -10,6 +10,220 @@
     <logo>https://april-lemonade.github.io/images/avatar.png</logo>
     <icon>https://april-lemonade.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[Java 整除问题]]></title>
+        <id>https://april-lemonade.github.io/post/java-zheng-chu-wen-ti/</id>
+        <link href="https://april-lemonade.github.io/post/java-zheng-chu-wen-ti/">
+        </link>
+        <updated>2021-05-29T07:37:14.000Z</updated>
+        <content type="html"><![CDATA[<p><code>System.out.println(5/2);</code><br>
+输出结果肯定是：2.5<br>
+但是程序输出结果是：2</p>
+<hr>
+<p><strong>两个整数相除，就会是整数，小数点后面不会保留</strong><br>
+在随便哪个整数加个小数点就解决了</p>
+<hr>
+<p><code>System.out.println(5.0/2);</code><br>
+输出结果：2.5</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Java遍历map]]></title>
+        <id>https://april-lemonade.github.io/post/java-bian-li-map/</id>
+        <link href="https://april-lemonade.github.io/post/java-bian-li-map/">
+        </link>
+        <updated>2021-05-29T07:35:10.000Z</updated>
+        <content type="html"><![CDATA[<p>方法一 通过Map.entrySet遍历key和value，在for-each循环中使用entries来遍历.推荐，尤其是容量大时</p>
+<p>这是最常见的并且在大多数情况下也是最可取的遍历方式。在键值都需要时使用。</p>
+<pre><code>Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();  
+  
+for (Map.Entry&lt;Integer, Integer&gt; entry : map.entrySet()) {  
+  
+    System.out.println(&quot;Key = &quot; + entry.getKey() + &quot;, Value = &quot; + entry.getValue());  
+  
+}  
+</code></pre>
+<p>方法二、通过Map.keySet遍历key，通过键找值value遍历（效率低）,普遍使用，二次取值</p>
+<pre><code>Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();  
+  
+for (Integer key : map.keySet()) {  
+  
+    Integer value = map.get(key);  
+  
+    System.out.println(&quot;Key = &quot; + key + &quot;, Value = &quot; + value);  
+  
+}
+</code></pre>
+<p>方法三 如果只需要map中的键或者值，你可以通过Map.keySet或Map.values来实现遍历，而不是用entrySet。在for-each循环中遍历keys或values。</p>
+<pre><code>Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();  
+  
+//遍历map中的键  
+  
+for (Integer key : map.keySet()) {  
+  
+    System.out.println(&quot;Key = &quot; + key);  
+  
+}  
+ 
+//遍历map中的值  
+  
+for (Integer value : map.values()) {  
+  
+    System.out.println(&quot;Value = &quot; + value);  
+  
+}  
+</code></pre>
+<p>方法四:通过Map.entrySet使用iterator遍历key和value</p>
+<pre><code>Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();  
+  
+Iterator&lt;Map.Entry&lt;Integer, Integer&gt;&gt; entries = map.entrySet().iterator();  
+  
+while (entries.hasNext()) {  
+  
+    Map.Entry&lt;Integer, Integer&gt; entry = entries.next();  
+  
+    System.out.println(&quot;Key = &quot; + entry.getKey() + &quot;, Value = &quot; + entry.getValue());  
+  
+}  
+</code></pre>
+<p>全部代码：</p>
+<pre><code>public static void main(String[] args) {
+       init();
+       traversal();
+   }
+
+   // HashMap按照哈希算法来存取键对象，有很好的存取性能
+   private static HashMap&lt;String, String&gt; hMap = new HashMap&lt;&gt;();
+
+   // TreeMap实现了SortedMap接口，能对键对象进行排序。支持自然排序和客户化排序两种方式。
+   private static TreeMap&lt;String, String&gt; tMap = new TreeMap&lt;&gt;();
+
+   // map的赋值
+   public static void init() {
+       hMap.put(&quot;1&quot;, &quot;value1&quot;);
+       hMap.put(&quot;2&quot;, &quot;value2&quot;);
+       hMap.put(&quot;3&quot;, &quot;value3&quot;);
+   }
+
+   // map的遍历
+   public static void traversal() {
+       // 第一种：普遍使用，二次取值
+       System.out.println(&quot;通过Map.keySet遍历key和value：&quot;);
+       for (String key : hMap.keySet()) {
+           System.out.println(&quot;key= &quot; + key + &quot; and value= &quot; + hMap.get(key));
+       }
+
+       // 第二种
+       System.out.println(&quot;通过Map.entrySet使用iterator遍历key和value：&quot;);
+       Iterator&lt;Map.Entry&lt;String, String&gt;&gt; it = hMap.entrySet().iterator();
+       while (it.hasNext()) {
+           Map.Entry&lt;String, String&gt; entry = it.next();
+           System.out.println(&quot;key= &quot; + entry.getKey() + &quot; and value= &quot; + entry.getValue());
+       }
+
+       // 第三种：推荐，尤其是容量大时
+       System.out.println(&quot;通过Map.entrySet遍历key和value&quot;);
+       for (Map.Entry&lt;String, String&gt; entry : hMap.entrySet()) {
+           System.out.println(&quot;key= &quot; + entry.getKey() + &quot; and value= &quot; + entry.getValue());
+       }
+
+       // 第四种
+       System.out.println(&quot;通过Map.values()遍历所有的value，但不能遍历key&quot;);
+       for (String v : hMap.values()) {
+           System.out.println(&quot;value= &quot; + v);
+       }
+   }
+   ```
+运行结果：
+</code></pre>
+<pre><code>通过Map.keySet遍历key和value：
+key= 1 and value= value1
+key= 2 and value= value2
+key= 3 and value= value3
+通过Map.entrySet使用iterator遍历key和value：
+key= 1 and value= value1
+key= 2 and value= value2
+key= 3 and value= value3
+通过Map.entrySet遍历key和value
+key= 1 and value= value1
+key= 2 and value= value2
+key= 3 and value= value3
+通过Map.values()遍历所有的value，但不能遍历key
+value= value1
+value= value2
+value= value3
+</code></pre>
+<pre><code></code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Java文本处理]]></title>
+        <id>https://april-lemonade.github.io/post/java-wen-ben-chu-li/</id>
+        <link href="https://april-lemonade.github.io/post/java-wen-ben-chu-li/">
+        </link>
+        <updated>2021-05-29T07:29:53.000Z</updated>
+        <content type="html"><![CDATA[<pre><code>public class TempTest {
+ public static void main(String[] args) {
+  //string去除空格
+  String str=&quot; hello world &quot;;
+  System.out.println(str);
+ 
+  String str1=str.trim();//去除首尾空格
+  System.out.println(str1);
+ 
+  String str2=str.replace(&quot; &quot;,&quot;&quot;);//去掉所有空格,包括首尾,中间
+  System.out.println(str2);
+ 
+  String str3=str.replaceAll(&quot; +&quot;,&quot;&quot;);//去掉所有空格,包括首尾,中间
+  System.out.println(str3);
+ 
+  String str4=str.replaceAll(&quot;\\s*&quot;,&quot;&quot;); //可以替换大部分空白字符， 不限于空格 . 说明:\s 可以匹配空格、制表符、换页符等空白字符的其中任意一个
+  System.out.println(str4);
+ 
+  //string去除标点符号
+  //正则表达式去除标点
+  String stri=&quot;ss&amp;*(,.~1如果@&amp;(^-自己!!知道`什`么#是$苦%……Z，&amp;那*()么一-=定——+告诉::;\&quot;'/?.,&gt;&lt;[]{}\\||别人什么是甜。&quot;;
+  System.out.println(stri);
+ 
+  String stri1=stri.replaceAll(&quot;\\p{Punct}&quot;,&quot;&quot;);//不能完全清除标点
+  System.out.println(stri1);
+ 
+  String stri2=stri.replaceAll(&quot;\\pP&quot;,&quot;&quot;);//完全清除标点
+  System.out.println(stri2);
+ 
+  String stri3=stri.replaceAll(&quot;\\p{P}&quot;,&quot;&quot;);//同上,一样的功能
+  System.out.println(stri3);
+ 
+  String stri4=stri.replaceAll(&quot;[\\pP\\p{Punct}]&quot;,&quot;&quot;);//清除所有符号,只留下字母 数字 汉字 共3类.
+  System.out.println(stri4);
+ }
+}
+</code></pre>
+<hr>
+<p>关于replace 和replaceAll:</p>
+<pre><code>replace(char oldChar,char newChar)
+
+replace(CharSequence target,CharSequence replacement)
+
+replaceAll(String regex,String replacement)
+
+</code></pre>
+<ol>
+<li>
+<p>replace的参数是char和CharSequence,即可以支持字符的替换,也支持字符串的替换(CharSequence即字符串序列的意思,说白了也就是字符串);</p>
+</li>
+<li>
+<p>replaceAll的参数是regex,即基于规则表达式的替换,比如,可以通过replaceAll(&quot;\d&quot;, &quot;*&quot;)把一个字符串所有的数字字符都换成星号;</p>
+</li>
+<li>
+<p>相同点是都是全部替换,即把源字符串中的某一字符或字符串全部换成指定的字符或字符串,如果只想替换第一次出现的,可以使用 replaceFirst(),这个方法也是基于规则表达式的替换,但与replaceAll()不同的是,只替换第一次出现的字符串;</p>
+</li>
+<li>
+<p>另外,如果replaceAll()和replaceFirst()所用的参数据不是基于规则表达式的,则与replace()替换字符串的效果是一样的,即这两者也支持字符串的操作;</p>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://april-lemonade.github.io/post/hello-gridea/</id>

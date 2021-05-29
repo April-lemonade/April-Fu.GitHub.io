@@ -2,24 +2,20 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Hello Gridea | Gridea</title>
+<title>Java文本处理 | Gridea</title>
 <link rel="shortcut icon" href="https://april-lemonade.github.io/favicon.ico?v=1622273988323">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://april-lemonade.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Hello Gridea | Gridea - Atom Feed" href="https://april-lemonade.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="Java文本处理 | Gridea - Atom Feed" href="https://april-lemonade.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="👏  欢迎使用 Gridea ！
-✍️  Gridea 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...
-
-Github
-Gridea 主页
-示例网站
-特性👇
-📝  你可以使用最酷的 Markdo..." />
-    <meta name="keywords" content="Gridea" />
+    <meta name="description" content="public class TempTest {
+ public static void main(String[] args) {
+  //string去除空格
+  String str=&quot; hello world &quot;;..." />
+    <meta name="keywords" content="java" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -81,63 +77,102 @@ Gridea 主页
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Hello Gridea
+              Java文本处理
             </h2>
             <div class="post-info">
               <span>
-                2018-12-12
+                2021-05-29
               </span>
               <span>
-                2 min read
+                3 min read
               </span>
               
-                <a href="https://april-lemonade.github.io/tag/deGEa61Nf/" class="post-tag">
-                  # Gridea
+                <a href="https://april-lemonade.github.io/tag/WXAQbl5aT/" class="post-tag">
+                  # java
                 </a>
               
             </div>
             
-              <img class="post-feature-image" src="https://april-lemonade.github.io/post-images/hello-gridea.png" alt="">
-            
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+                <pre><code>public class TempTest {
+ public static void main(String[] args) {
+  //string去除空格
+  String str=&quot; hello world &quot;;
+  System.out.println(str);
+ 
+  String str1=str.trim();//去除首尾空格
+  System.out.println(str1);
+ 
+  String str2=str.replace(&quot; &quot;,&quot;&quot;);//去掉所有空格,包括首尾,中间
+  System.out.println(str2);
+ 
+  String str3=str.replaceAll(&quot; +&quot;,&quot;&quot;);//去掉所有空格,包括首尾,中间
+  System.out.println(str3);
+ 
+  String str4=str.replaceAll(&quot;\\s*&quot;,&quot;&quot;); //可以替换大部分空白字符， 不限于空格 . 说明:\s 可以匹配空格、制表符、换页符等空白字符的其中任意一个
+  System.out.println(str4);
+ 
+  //string去除标点符号
+  //正则表达式去除标点
+  String stri=&quot;ss&amp;*(,.~1如果@&amp;(^-自己!!知道`什`么#是$苦%……Z，&amp;那*()么一-=定——+告诉::;\&quot;'/?.,&gt;&lt;[]{}\\||别人什么是甜。&quot;;
+  System.out.println(stri);
+ 
+  String stri1=stri.replaceAll(&quot;\\p{Punct}&quot;,&quot;&quot;);//不能完全清除标点
+  System.out.println(stri1);
+ 
+  String stri2=stri.replaceAll(&quot;\\pP&quot;,&quot;&quot;);//完全清除标点
+  System.out.println(stri2);
+ 
+  String stri3=stri.replaceAll(&quot;\\p{P}&quot;,&quot;&quot;);//同上,一样的功能
+  System.out.println(stri3);
+ 
+  String stri4=stri.replaceAll(&quot;[\\pP\\p{Punct}]&quot;,&quot;&quot;);//清除所有符号,只留下字母 数字 汉字 共3类.
+  System.out.println(stri4);
+ }
+}
+</code></pre>
+<hr>
+<p>关于replace 和replaceAll:</p>
+<pre><code>replace(char oldChar,char newChar)
+
+replace(CharSequence target,CharSequence replacement)
+
+replaceAll(String regex,String replacement)
+
+</code></pre>
+<ol>
+<li>
+<p>replace的参数是char和CharSequence,即可以支持字符的替换,也支持字符串的替换(CharSequence即字符串序列的意思,说白了也就是字符串);</p>
+</li>
+<li>
+<p>replaceAll的参数是regex,即基于规则表达式的替换,比如,可以通过replaceAll(&quot;\d&quot;, &quot;*&quot;)把一个字符串所有的数字字符都换成星号;</p>
+</li>
+<li>
+<p>相同点是都是全部替换,即把源字符串中的某一字符或字符串全部换成指定的字符或字符串,如果只想替换第一次出现的,可以使用 replaceFirst(),这个方法也是基于规则表达式的替换,但与replaceAll()不同的是,只替换第一次出现的字符串;</p>
+</li>
+<li>
+<p>另外,如果replaceAll()和replaceFirst()所用的参数据不是基于规则表达式的,则与replace()替换字符串的效果是一样的,即这两者也支持字符串的操作;</p>
+</li>
+</ol>
 
               </div>
               <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E7%89%B9%E6%80%A7">特性👇</a></li>
-</ul>
-</li>
-</ul>
-
+                
               </div>
             </div>
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://april-lemonade.github.io/post/hello-gridea/">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
         
 
         
